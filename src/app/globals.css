@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0C1E3C; /* Podrías definir tu azul oscuro como fondo principal aquí */
+  --foreground: #ffffff;
+
+  --font-geist-sans: 'Geist Sans', sans-serif;
+  --font-geist-mono: 'Geist Mono', monospace;
+  --font-libre-baskerville: 'Libre Baskerville', serif;
+  --font-playfair-display: 'Playfair Display', serif;
+  --font-cinzel: 'Cinzel', serif;
+  --font-merriweather: 'Merriweather', serif;
+  --font-lato: 'Lato', sans-serif;
+  --font-open-sans: 'Open Sans', sans-serif;
+}
+
+html, body {
+  background-color: var(--background); /* Usar tu variable de fondo */
+  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+}
+
+/* Fuentes personalizadas */
+.font-libre {
+  font-family: var(--font-libre-baskerville), serif;
+}
+
+.font-playfair {
+  font-family: var(--font-playfair-display), serif;
+}
+
+.font-cinzel {
+  font-family: var(--font-cinzel), serif;
+}
+
+.font-merriweather {
+  font-family: var(--font-merriweather), serif;
+}
+
+.font-lato {
+  font-family: var(--font-lato), sans-serif;
+}
+
+.font-openSans {
+  font-family: var(--font-open-sans), sans-serif;
+}
+
+/* Animación fade-in */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease forwards;
+}
+
+@keyframes pulse-light {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.01); /* Un pequeño aumento */
+    opacity: 0.98; /* Un poco menos opaco */
+  }
+}
+
+.animate-pulse-light {
+  animation: pulse-light 3s ease-in-out infinite; /* 3 segundos, suave, infinito */
+}
