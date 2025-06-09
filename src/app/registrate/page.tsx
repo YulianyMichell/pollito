@@ -10,6 +10,20 @@ export default function FormularioInscripcion() {
 
   const [tipoDocumento, setTipoDocumento] = useState("");
   const [sexo, setSexo] = useState("");
+  const [pais, setPais] = useState("");
+
+  const paises = [
+    "Colombia",
+    "México",
+    "España",
+    "Argentina",
+    "Chile",
+    "Estados Unidos",
+    "Canadá",
+    "Alemania",
+    "Francia",
+    "Reino Unido",
+  ];
 
   return (
     <div
@@ -78,7 +92,20 @@ export default function FormularioInscripcion() {
               className={inputStyle}
               placeholder="Fecha de nacimiento"
             />
-            <input className={inputStyle} placeholder="País de residencia" />
+            <select
+              className={inputStyle}
+              value={pais}
+              onChange={(e) => setPais(e.target.value)}
+            >
+              <option value="" disabled>
+                País de residencia
+              </option>
+              {paises.map((optionPais) => (
+                <option key={optionPais} value={optionPais}>
+                  {optionPais}
+                </option>
+              ))}
+            </select>
             <input className={inputStyle} placeholder="Departamento" />
             <input className={inputStyle} placeholder="Ciudad" />
           </div>
