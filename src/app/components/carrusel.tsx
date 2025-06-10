@@ -42,7 +42,6 @@ const Carrusel: React.FC = () => {
   };
 
   return (
-    // Agrega el id="destacados" aquí
     <div id="destacados" className="bg-pink-100 min-h-screen py-10 px-4">
       <div className="relative max-w-4xl mx-auto p-6 bg-pink-100 min-h-[500px] rounded-lg">
         {/* Título */}

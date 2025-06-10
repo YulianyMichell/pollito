@@ -1,14 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
-// Definimos los tipos de las props para el componente EventFormModal
 interface EventFormModalProps {
-  show: boolean; // Indica si el modal debe mostrarse
-  onClose: () => void; // Función para cerrar el modal
-  eventTitle: string; // Título del evento para mostrar en el formulario
+  show: boolean; 
+  onClose: () => void; 
+  eventTitle: string; 
 }
 
-// Tipamos correctamente el componente funcional de React (FC)
 const EventFormModal: React.FC<EventFormModalProps> = ({ show, onClose, eventTitle }) => {
   // Estado para los datos del formulario
   const [formData, setFormData] = useState({
@@ -16,54 +13,43 @@ const EventFormModal: React.FC<EventFormModalProps> = ({ show, onClose, eventTit
     email: "",
     telefono: "",
     comentarios: "",
-    evento: eventTitle, // Inicializamos el campo 'evento' con el título del evento recibido
+    evento: eventTitle, 
   });
 
-  // Estado para el manejo del estado del envío del formulario (si se envió, mensaje, si hay error)
   const [formStatus, setFormStatus] = useState({
     submitted: false,
     message: "",
     isError: false,
   });
 
-  // useEffect para actualizar el campo 'evento' en formData si el 'eventTitle' cambia.
-  // Esto es útil si el modal se reutiliza para diferentes eventos sin desmontarse.
+
   useEffect(() => {
     setFormData((prev) => ({ ...prev, evento: eventTitle }));
   }, [eventTitle]); // Se ejecuta cada vez que eventTitle cambia
 
-  // Tipamos la función handleChange para manejar cambios en los campos de entrada y textarea
+ 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target; // Extraemos el nombre y el valor del campo que cambió
     setFormData((prev) => ({ ...prev, [name]: value })); // Actualizamos el estado formData
   };
-
-  // Función para manejar el envío del formulario, tipada para un evento de formulario
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); // Previene el comportamiento por defecto del formulario (recargar la página)
-
-    // Establecemos el estado de envío a 'Enviando...'
+    e.preventDefault();
     setFormStatus({ submitted: true, message: "Enviando...", isError: false });
 
     try {
-      // Simulación de una llamada a la API o envío de datos al backend
-      // En un entorno real, aquí harías una llamada 'fetch' o 'axios'
-      await new Promise((resolve) => setTimeout(resolve, 1500)); // Espera 1.5 segundos para simular una respuesta
-
-      // Si la simulación es exitosa, establecemos el mensaje de éxito
+      await new Promise((resolve) => setTimeout(resolve, 1500)); 
       setFormStatus({
         submitted: true,
         message: "¡Gracias por tu interés! Te contactaremos pronto.",
         isError: false,
       });
 
-      // Opcional: Limpiar el formulario después de un envío exitoso
       setFormData({
         nombre: "",
         email: "",
         telefono: "",
         comentarios: "",
-        evento: eventTitle, // Mantenemos el título del evento para futuras aperturas si el modal no se cierra completamente
+        evento: eventTitle, 
       });
     } catch (error: any) {
       // Si ocurre un error durante el envío, capturamos el mensaje de error
@@ -131,11 +117,9 @@ const EventFormModal: React.FC<EventFormModalProps> = ({ show, onClose, eventTit
           </div>
         )}
 
-        {/* Formulario de entrada de datos: solo se muestra si el formulario NO ha sido enviado exitosamente */}
         {!(formStatus.submitted && !formStatus.isError) && (
           <form onSubmit={handleSubmit} className="space-y-4">
             {" "}
-            {/* Agrega espacio vertical entre elementos del formulario */}
             <div>
               <label htmlFor="nombre" className="block text-[#0C1E3C] text-sm font-bold mb-2">
                 Nombre Completo:
@@ -169,7 +153,7 @@ const EventFormModal: React.FC<EventFormModalProps> = ({ show, onClose, eventTit
                 Número de Teléfono (Opcional):
               </label>
               <input
-                type="tel" // Tipo de entrada para teléfono
+                type="tel" 
                 id="telefono"
                 name="telefono"
                 value={formData.telefono}
@@ -186,7 +170,7 @@ const EventFormModal: React.FC<EventFormModalProps> = ({ show, onClose, eventTit
                 name="comentarios"
                 value={formData.comentarios}
                 onChange={handleChange}
-                rows={3} // Número de filas visibles
+                rows={3} 
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-[#0C1E3C] leading-tight focus:outline-none focus:shadow-outline bg-white"
               ></textarea>
             </div>

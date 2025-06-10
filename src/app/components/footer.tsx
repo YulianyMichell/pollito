@@ -1,5 +1,3 @@
-// Footer.tsx
-
 "use client";
 import React from "react";
 import { FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";

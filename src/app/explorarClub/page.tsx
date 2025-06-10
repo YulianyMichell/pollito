@@ -117,7 +117,7 @@ export default function ExploraClub() {
       <div id="nuestros-servicios" className="pb-16 px-4 pt-0 bg-[#FDF6E3]"> {/* Cambiado py-16 a pb-16 pt-0 para controlar el padding superior después del nuevo título */}
         <div
           className="flex flex-col md:flex-row items-center justify-center gap-6 max-w-6xl mx-auto p-6 rounded-xl shadow-2xl text-[#0C1E3C]
-                       border border-[#A3C7E6]"
+                      border border-[#A3C7E6]"
         >
           <div className="md:w-1/2 space-y-4">
             <h3
