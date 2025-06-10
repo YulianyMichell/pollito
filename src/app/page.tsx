@@ -126,7 +126,7 @@ export default function HomeHeader() {
               </Link>
 
               <Link
-                href="public/videos/video.mp4"
+                href="../../public/videos/videos.mp4"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative inline-block px-6 py-3 border-2 border-[#13304e] bg-[#13304e] text-white text-base font-bold font-poppins rounded-full transition-all duration-300 overflow-hidden hover:bg-[#4893C2] hover:border-[#F2E1C2]"
