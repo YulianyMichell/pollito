@@ -1,14 +1,15 @@
+// HomeHeader.jsx
+
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Carrusel from "./components/carrusel";
-import Reseñas from "./components/resenas";
-import Footer from "./components/footer";
+import Carrusel from "./components/carrusel"; // Ajusta la ruta si es necesario
+import Reseñas from "./components/resenas"; // Ajusta la ruta si es necesario (asumiendo que ReseñasLibros es tu Reseñas)
+import Footer from "./components/footer"; // Ajusta la ruta si es necesario
 
 export default function HomeHeader() {
   const [scrolled, setScrolled] = useState(false);
-  const [showVideoModal, setShowVideoModal] = useState(false); // New state for modal visibility
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,17 +22,19 @@ export default function HomeHeader() {
   return (
     <>
       <div className="relative w-full min-h-screen">
-        {/* Portada y Overlay */}
+        {/* Imagen de portada como fondo que cubre toda la sección inicial */}
         <Image
           src="/img/portada3.jpg"
           alt="Portada con logo en la luna"
           fill
           priority
-          className="object-cover z-0"
+          className="object-cover z-0" // La imagen está en la capa más baja
         />
+
+        {/* Overlay oscuro para mejorar la legibilidad del texto */}
         <div className="absolute inset-0 bg-black opacity-30 z-[1]" />
 
-        {/* Header */}
+        {/* Header con efecto de espejo transparente */}
         <header
           className={`absolute top-0 left-0 w-full z-30 transition-all duration-500`}
           style={{
@@ -57,7 +60,7 @@ export default function HomeHeader() {
                 {[
                   { href: "#Home", label: "Inicio", icon: "/icons/inicio.svg" },
                   { href: "/biblioteca", label: "Mi Biblioteca", icon: "/icons/biblioteca.svg" },
-                  { href: "/eventos", label: "Eventos", icon: "/icons/eventos.svg" },
+                  { href: "/eventos", label: "Eventos", icon: "/icons/eventos.svg" }, 
                   { href: "/nosotros", label: "Nosotros", icon: "/icons/nosotros.svg" },
                 ].map(({ href, label, icon }) => (
                   <li key={href}>
@@ -79,7 +82,7 @@ export default function HomeHeader() {
                     </Link>
                   </li>
                 ))}
-
+                
                 <div className="flex items-center space-x-2">
                   <li>
                     <Link
@@ -122,46 +125,23 @@ export default function HomeHeader() {
                 <span className="absolute inset-0 bg-blue-400/40 rounded-full scale-0 hover:scale-100 transition-transform duration-500 z-0" />
               </Link>
 
-              {/* Button to open the video modal */}
-              <button
-                onClick={() => setShowVideoModal(true)}
+              <Link
+                href="public/videos/video.mp4"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="relative inline-block px-6 py-3 border-2 border-[#13304e] bg-[#13304e] text-white text-base font-bold font-poppins rounded-full transition-all duration-300 overflow-hidden hover:bg-[#4893C2] hover:border-[#F2E1C2]"
               >
                 <span className="relative z-10">Ver video</span>
                 <span className="absolute inset-0 bg-blue-400/40 rounded-full scale-0 hover:scale-100 transition-transform duration-500 z-0" />
-              </button>
+              </Link>
             </div>
           </div>
         </section>
       </div>
 
-      {/* Video Modal */}
-      {showVideoModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 p-4">
-          <div className="relative bg-white rounded-lg p-4 max-w-4xl w-full">
-            <button
-              onClick={() => setShowVideoModal(false)}
-              className="absolute top-2 right-2 text-gray-800 text-3xl font-bold p-2"
-            >
-              &times;
-            </button>
-            <div className="relative" style={{ paddingBottom: '56.25%', height: 0 }}>
-              <iframe
-                src="/videos/video.mp4" // Path to your video
-                title="Mundos de Papel Video"
-                className="absolute top-0 left-0 w-full h-full rounded-md"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Other components */}
+      {/* El resto de tus componentes que aparecerán debajo de la sección de portada */}
       <Carrusel />
-      <Reseñas />
+      <Reseñas /> {/* Asumiendo que `Reseñas` es tu componente `ReseñasLibros` */}
       <Footer />
     </>
   );
